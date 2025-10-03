@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "documents1",
+  "info": {
+    "singularName": "document1",
+    "pluralName": "documents1",
+    "displayName": "Documents"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "law",
+        "regulation",
+        "standard"
+      ]
+    },
+    "published_date": {
+      "type": "date"
+    },
+    "published": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
