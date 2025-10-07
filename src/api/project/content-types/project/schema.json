@@ -4,7 +4,7 @@
   "info": {
     "singularName": "project",
     "pluralName": "projects",
-    "displayName": "Project"
+    "displayName": "Projects"
   },
   "options": {
     "draftAndPublish": true
@@ -14,9 +14,6 @@
     "title": {
       "type": "string",
       "required": true
-    },
-    "description": {
-      "type": "text"
     },
     "image": {
       "type": "media",
@@ -28,30 +25,9 @@
         "audios"
       ]
     },
-    "status2": {
-      "type": "enumeration",
-      "default": "planned",
-      "enum": [
-        "completed",
-        "in_progress",
-        "planned"
-      ]
-    },
-    "start_date": {
-      "type": "date"
-    },
-    "end_date": {
-      "type": "date"
-    },
-    "client": {
-      "type": "string"
-    },
-    "location": {
-      "type": "string"
-    },
-    "published": {
-      "type": "boolean",
-      "default": false
+    "order": {
+      "type": "biginteger",
+      "default": "0"
     }
   }
 }

@@ -27,12 +27,6 @@
     "duration": {
       "type": "string"
     },
-    "price": {
-      "type": "decimal"
-    },
-    "max_participants": {
-      "type": "integer"
-    },
     "registration_link": {
       "type": "string"
     },

@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "documents1",
+  "collectionName": "laws",
   "info": {
-    "singularName": "document1",
-    "pluralName": "documents1",
-    "displayName": "Documents"
+    "singularName": "law",
+    "pluralName": "laws",
+    "displayName": "Law"
   },
   "options": {
     "draftAndPublish": true
@@ -21,27 +21,13 @@
     "file": {
       "type": "media",
       "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ]
-    },
-    "category": {
-      "type": "enumeration",
-      "enum": [
-        "law",
-        "regulation",
-        "standard"
-      ]
-    },
-    "published_date": {
-      "type": "date"
-    },
-    "published": {
-      "type": "boolean",
-      "default": false
     }
   }
 }

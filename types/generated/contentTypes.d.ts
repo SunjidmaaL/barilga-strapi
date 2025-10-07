@@ -594,32 +594,79 @@ export interface ApiContactContact extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiDocument1Document1 extends Struct.CollectionTypeSchema {
-  collectionName: 'documents1';
+export interface ApiLawLaw extends Struct.CollectionTypeSchema {
+  collectionName: 'laws';
   info: {
-    displayName: 'Documents';
-    pluralName: 'documents1';
-    singularName: 'document1';
+    displayName: 'Law';
+    pluralName: 'laws';
+    singularName: 'law';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    category: Schema.Attribute.Enumeration<['law', 'regulation', 'standard']>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     file: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::law.law'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLicenseLicense extends Struct.CollectionTypeSchema {
+  collectionName: 'licenses';
+  info: {
+    displayName: 'License';
+    pluralName: 'licenses';
+    singularName: 'license';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.Enumeration<
+      [
+        'construction',
+        'safety',
+        'material',
+        'transport',
+        'environmental',
+        'other',
+      ]
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText;
+    document: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    expiryDate: Schema.Attribute.Date & Schema.Attribute.Required;
+    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    issueDate: Schema.Attribute.Date & Schema.Attribute.Required;
+    issuedBy: Schema.Attribute.String & Schema.Attribute.Required;
+    licenseNumber: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::document1.document1'
+      'api::license.license'
     > &
       Schema.Attribute.Private;
-    published: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    published_date: Schema.Attribute.Date;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'>;
+    status1: Schema.Attribute.Enumeration<
+      ['active', 'expiring_soon', 'expired', 'suspended']
+    > &
+      Schema.Attribute.DefaultTo<'active'>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -662,7 +709,7 @@ export interface ApiNews1News1 extends Struct.CollectionTypeSchema {
 export interface ApiProjectProject extends Struct.CollectionTypeSchema {
   collectionName: 'projects';
   info: {
-    displayName: 'Project';
+    displayName: 'Projects';
     pluralName: 'projects';
     singularName: 'project';
   };
@@ -670,12 +717,9 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    client: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    end_date: Schema.Attribute.Date;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -683,14 +727,8 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       'api::project.project'
     > &
       Schema.Attribute.Private;
-    location: Schema.Attribute.String;
-    published: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    order: Schema.Attribute.BigInteger & Schema.Attribute.DefaultTo<'0'>;
     publishedAt: Schema.Attribute.DateTime;
-    start_date: Schema.Attribute.Date;
-    status2: Schema.Attribute.Enumeration<
-      ['completed', 'in_progress', 'planned']
-    > &
-      Schema.Attribute.DefaultTo<'planned'>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -723,8 +761,6 @@ export interface ApiTrainingTraining extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     location: Schema.Attribute.String;
-    max_participants: Schema.Attribute.Integer;
-    price: Schema.Attribute.Decimal;
     published: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     publishedAt: Schema.Attribute.DateTime;
     registration_link: Schema.Attribute.String;
@@ -1250,7 +1286,8 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::company.company': ApiCompanyCompany;
       'api::contact.contact': ApiContactContact;
-      'api::document1.document1': ApiDocument1Document1;
+      'api::law.law': ApiLawLaw;
+      'api::license.license': ApiLicenseLicense;
       'api::news1.news1': ApiNews1News1;
       'api::project.project': ApiProjectProject;
       'api::training.training': ApiTrainingTraining;

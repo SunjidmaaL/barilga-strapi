@@ -1,0 +1,82 @@
+{
+  "kind": "collectionType",
+  "collectionName": "licenses",
+  "info": {
+    "singularName": "license",
+    "pluralName": "licenses",
+    "displayName": "License"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "licenseNumber": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "issueDate": {
+      "type": "date",
+      "required": true
+    },
+    "expiryDate": {
+      "type": "date",
+      "required": true
+    },
+    "issuedBy": {
+      "type": "string",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "construction",
+        "safety",
+        "material",
+        "transport",
+        "environmental",
+        "other"
+      ]
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "status1": {
+      "type": "enumeration",
+      "default": "active",
+      "enum": [
+        "active",
+        "expiring_soon",
+        "expired",
+        "suspended"
+      ]
+    },
+    "document": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
