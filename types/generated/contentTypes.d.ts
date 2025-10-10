@@ -530,41 +530,6 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiCompanyCompany extends Struct.SingleTypeSchema {
-  collectionName: 'companies';
-  info: {
-    displayName: 'Company';
-    pluralName: 'companies';
-    singularName: 'company';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    about: Schema.Attribute.RichText;
-    address: Schema.Attribute.String;
-    companyName: Schema.Attribute.String & Schema.Attribute.Required;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::company.company'
-    > &
-      Schema.Attribute.Private;
-    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    phone: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    socialMedia: Schema.Attribute.JSON;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    webSite: Schema.Attribute.String;
-  };
-}
-
 export interface ApiContactContact extends Struct.CollectionTypeSchema {
   collectionName: 'contacts';
   info: {
@@ -579,14 +544,12 @@ export interface ApiContactContact extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::contact.contact'
     > &
       Schema.Attribute.Private;
-    phone: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -730,6 +693,37 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     order: Schema.Attribute.BigInteger & Schema.Attribute.DefaultTo<'0'>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSlideSlide extends Struct.CollectionTypeSchema {
+  collectionName: 'slides';
+  info: {
+    displayName: 'Slide';
+    pluralName: 'slides';
+    singularName: 'slide';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    > &
+      Schema.Attribute.Required;
+    link: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::slide.slide'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1284,12 +1278,12 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::activity.activity': ApiActivityActivity;
       'api::category.category': ApiCategoryCategory;
-      'api::company.company': ApiCompanyCompany;
       'api::contact.contact': ApiContactContact;
       'api::law.law': ApiLawLaw;
       'api::license.license': ApiLicenseLicense;
       'api::news1.news1': ApiNews1News1;
       'api::project.project': ApiProjectProject;
+      'api::slide.slide': ApiSlideSlide;
       'api::training.training': ApiTrainingTraining;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

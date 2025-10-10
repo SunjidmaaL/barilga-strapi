@@ -10,13 +10,5 @@
     "draftAndPublish": true
   },
   "pluginOptions": {},
-  "attributes": {
-    "email": {
-      "type": "email",
-      "required": true
-    },
-    "phone": {
-      "type": "string"
-    }
-  }
+  "attributes": {}
 }
