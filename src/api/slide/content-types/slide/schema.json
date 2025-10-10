@@ -28,6 +28,13 @@
     },
     "link": {
       "type": "string"
+    },
+    "order": {
+      "type": "integer",
+      "required": true,
+      "default": 0,
+      "unique": true,
+      "min": 0
     }
   }
 }
