@@ -28,13 +28,8 @@
         "audios"
       ]
     },
-    "order": {
-      "type": "integer",
-      "default": 0
-    },
-    "published": {
-      "type": "boolean",
-      "default": false
+    "about": {
+      "type": "richtext"
     }
   }
 }

@@ -19,13 +19,7 @@
       "type": "text"
     },
     "date": {
-      "type": "datetime"
-    },
-    "location": {
-      "type": "string"
-    },
-    "duration": {
-      "type": "string"
+      "type": "date"
     },
     "registration_link": {
       "type": "string"
@@ -43,6 +37,9 @@
     "published": {
       "type": "boolean",
       "default": false
+    },
+    "content": {
+      "type": "richtext"
     }
   }
 }
