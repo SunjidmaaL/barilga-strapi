@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "license_tables",
+  "info": {
+    "singularName": "license-table",
+    "pluralName": "license-tables",
+    "displayName": "License-table"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "year": {
+      "type": "biginteger"
+    },
+    "total": {
+      "type": "biginteger"
+    },
+    "newlyIssued": {
+      "type": "biginteger"
+    },
+    "extended": {
+      "type": "biginteger"
+    },
+    "cancelled": {
+      "type": "biginteger"
+    },
+    "meetings": {
+      "type": "biginteger"
+    }
+  }
+}

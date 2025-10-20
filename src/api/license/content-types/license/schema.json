@@ -28,55 +28,14 @@
       "type": "date",
       "required": true
     },
-    "issuedBy": {
+    "issuer": {
       "type": "string",
       "required": true
     },
-    "category": {
-      "type": "enumeration",
-      "enum": [
-        "construction",
-        "safety",
-        "material",
-        "transport",
-        "environmental",
-        "other"
-      ]
-    },
-    "description": {
-      "type": "richtext"
-    },
-    "status1": {
-      "type": "enumeration",
-      "default": "active",
-      "enum": [
-        "active",
-        "expiring_soon",
-        "expired",
-        "suspended"
-      ]
-    },
-    "document": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "title"
-    },
-    "order": {
-      "type": "integer",
-      "default": 0
-    },
-    "featured": {
+    "isActive": {
       "type": "boolean",
-      "default": false
+      "required": true,
+      "default": true
     }
   }
 }
