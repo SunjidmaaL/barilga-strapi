@@ -18,12 +18,6 @@
     "description": {
       "type": "text"
     },
-    "date": {
-      "type": "date"
-    },
-    "registration_link": {
-      "type": "string"
-    },
     "image": {
       "type": "media",
       "multiple": false,

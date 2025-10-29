@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "expert_teams",
+  "info": {
+    "singularName": "expert-team",
+    "pluralName": "expert-teams",
+    "displayName": "expert-team"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "order": {
+      "type": "biginteger"
+    }
+  }
+}

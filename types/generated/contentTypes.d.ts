@@ -560,6 +560,36 @@ export interface ApiContactContact extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiExpertTeamExpertTeam extends Struct.CollectionTypeSchema {
+  collectionName: 'expert_teams';
+  info: {
+    displayName: 'expert-team';
+    pluralName: 'expert-teams';
+    singularName: 'expert-team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::expert-team.expert-team'
+    > &
+      Schema.Attribute.Private;
+    order: Schema.Attribute.BigInteger;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiLawLaw extends Struct.CollectionTypeSchema {
   collectionName: 'laws';
   info: {
@@ -806,7 +836,6 @@ export interface ApiTrainingTraining extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    date: Schema.Attribute.Date;
     description: Schema.Attribute.Text;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -817,7 +846,6 @@ export interface ApiTrainingTraining extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     published: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     publishedAt: Schema.Attribute.DateTime;
-    registration_link: Schema.Attribute.String;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1339,6 +1367,7 @@ declare module '@strapi/strapi' {
       'api::activity.activity': ApiActivityActivity;
       'api::contact-hr.contact-hr': ApiContactHrContactHr;
       'api::contact.contact': ApiContactContact;
+      'api::expert-team.expert-team': ApiExpertTeamExpertTeam;
       'api::law.law': ApiLawLaw;
       'api::license-info.license-info': ApiLicenseInfoLicenseInfo;
       'api::license-table.license-table': ApiLicenseTableLicenseTable;
