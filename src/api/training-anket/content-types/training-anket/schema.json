@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "training_ankets",
+  "info": {
+    "singularName": "training-anket",
+    "pluralName": "training-ankets",
+    "displayName": "Training-anket"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

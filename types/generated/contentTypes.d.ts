@@ -821,6 +821,36 @@ export interface ApiSlideSlide extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiTrainingAnketTrainingAnket
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'training_ankets';
+  info: {
+    displayName: 'Training-anket';
+    pluralName: 'training-ankets';
+    singularName: 'training-anket';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    file: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::training-anket.training-anket'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTrainingTraining extends Struct.CollectionTypeSchema {
   collectionName: 'trainings';
   info: {
@@ -1375,6 +1405,7 @@ declare module '@strapi/strapi' {
       'api::news1.news1': ApiNews1News1;
       'api::project.project': ApiProjectProject;
       'api::slide.slide': ApiSlideSlide;
+      'api::training-anket.training-anket': ApiTrainingAnketTrainingAnket;
       'api::training.training': ApiTrainingTraining;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
