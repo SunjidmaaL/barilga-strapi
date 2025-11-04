@@ -590,6 +590,37 @@ export interface ApiExpertTeamExpertTeam extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiForeignRelationForeignRelation
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'foreign_relations';
+  info: {
+    displayName: 'Foreign-relation';
+    pluralName: 'foreign-relations';
+    singularName: 'foreign-relation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::foreign-relation.foreign-relation'
+    > &
+      Schema.Attribute.Private;
+    order: Schema.Attribute.BigInteger;
+    picture: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiLawLaw extends Struct.CollectionTypeSchema {
   collectionName: 'laws';
   info: {
@@ -1398,6 +1429,7 @@ declare module '@strapi/strapi' {
       'api::contact-hr.contact-hr': ApiContactHrContactHr;
       'api::contact.contact': ApiContactContact;
       'api::expert-team.expert-team': ApiExpertTeamExpertTeam;
+      'api::foreign-relation.foreign-relation': ApiForeignRelationForeignRelation;
       'api::law.law': ApiLawLaw;
       'api::license-info.license-info': ApiLicenseInfoLicenseInfo;
       'api::license-table.license-table': ApiLicenseTableLicenseTable;

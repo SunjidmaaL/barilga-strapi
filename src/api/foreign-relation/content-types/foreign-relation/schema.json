@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "foreign_relations",
+  "info": {
+    "singularName": "foreign-relation",
+    "pluralName": "foreign-relations",
+    "displayName": "Foreign-relation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "picture": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "order": {
+      "type": "biginteger"
+    }
+  }
+}
