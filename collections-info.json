@@ -1,0 +1,492 @@
+{
+  "server": {
+    "host": "0.0.0.0",
+    "port": 1337,
+    "baseUrl": "http://localhost:1337/api"
+  },
+  "apiConfig": {
+    "defaultLimit": 25,
+    "maxLimit": 100,
+    "withCount": true
+  },
+  "collections": [
+    {
+      "id": 1,
+      "displayName": "Activity",
+      "singularName": "activity",
+      "pluralName": "activities",
+      "collectionName": "activities",
+      "endpoint": "/api/activities",
+      "draftAndPublish": true,
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "icon",
+          "type": "media",
+          "multiple": false,
+          "required": false,
+          "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        {
+          "name": "about",
+          "type": "richtext",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "displayName": "Contact-info",
+      "singularName": "contact",
+      "pluralName": "contacts",
+      "collectionName": "contacts",
+      "endpoint": "/api/contacts",
+      "draftAndPublish": true,
+      "attributes": [
+        {
+          "name": "address",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "phone",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "displayName": "Contact-HR",
+      "singularName": "contact-hr",
+      "pluralName": "contact-hrs",
+      "collectionName": "contact_hrs",
+      "endpoint": "/api/contact-hrs",
+      "draftAndPublish": true,
+      "attributes": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "phone",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "fax",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "order",
+          "type": "biginteger",
+          "required": false,
+          "default": "0"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "displayName": "expert-team",
+      "singularName": "expert-team",
+      "pluralName": "expert-teams",
+      "collectionName": "expert_teams",
+      "endpoint": "/api/expert-teams",
+      "draftAndPublish": true,
+      "attributes": [
+        {
+          "name": "image",
+          "type": "media",
+          "multiple": false,
+          "required": true,
+          "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        {
+          "name": "order",
+          "type": "biginteger",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "displayName": "Foreign-relation",
+      "singularName": "foreign-relation",
+      "pluralName": "foreign-relations",
+      "collectionName": "foreign_relations",
+      "endpoint": "/api/foreign-relations",
+      "draftAndPublish": true,
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "picture",
+          "type": "media",
+          "multiple": false,
+          "required": false,
+          "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        {
+          "name": "order",
+          "type": "biginteger",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "displayName": "Law",
+      "singularName": "law",
+      "pluralName": "laws",
+      "collectionName": "laws",
+      "endpoint": "/api/laws",
+      "draftAndPublish": true,
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "file",
+          "type": "media",
+          "multiple": false,
+          "required": false,
+          "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        {
+          "name": "date",
+          "type": "date",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "displayName": "License",
+      "singularName": "license",
+      "pluralName": "licenses",
+      "collectionName": "licenses",
+      "endpoint": "/api/licenses",
+      "draftAndPublish": true,
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "licenseNumber",
+          "type": "string",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "issueDate",
+          "type": "date",
+          "required": true
+        },
+        {
+          "name": "expiryDate",
+          "type": "date",
+          "required": true
+        },
+        {
+          "name": "issuer",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "isActive",
+          "type": "boolean",
+          "required": true,
+          "default": true
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "displayName": "License-info",
+      "singularName": "license-info",
+      "pluralName": "license-infos",
+      "collectionName": "license_infos",
+      "endpoint": "/api/license-infos",
+      "draftAndPublish": true,
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "images",
+          "type": "media",
+          "multiple": false,
+          "required": false,
+          "allowedTypes": ["images", "files", "videos", "audios"]
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "displayName": "License-table",
+      "singularName": "license-table",
+      "pluralName": "license-tables",
+      "collectionName": "license_tables",
+      "endpoint": "/api/license-tables",
+      "draftAndPublish": true,
+      "attributes": [
+        {
+          "name": "year",
+          "type": "biginteger",
+          "required": false
+        },
+        {
+          "name": "total",
+          "type": "biginteger",
+          "required": false
+        },
+        {
+          "name": "newlyIssued",
+          "type": "biginteger",
+          "required": false
+        },
+        {
+          "name": "extended",
+          "type": "biginteger",
+          "required": false
+        },
+        {
+          "name": "cancelled",
+          "type": "biginteger",
+          "required": false
+        },
+        {
+          "name": "meetings",
+          "type": "biginteger",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "displayName": "News",
+      "singularName": "news1",
+      "pluralName": "news2",
+      "collectionName": "news2",
+      "endpoint": "/api/news2",
+      "draftAndPublish": true,
+      "note": "⚠️ Endpoint is /api/news2 (not /api/news or /api/news1)",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "content",
+          "type": "richtext",
+          "required": false
+        },
+        {
+          "name": "date",
+          "type": "date",
+          "required": false
+        },
+        {
+          "name": "image",
+          "type": "media",
+          "multiple": false,
+          "required": false,
+          "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        {
+          "name": "slug",
+          "type": "uid",
+          "targetField": "title",
+          "required": false
+        },
+        {
+          "name": "published",
+          "type": "boolean",
+          "required": false,
+          "default": false
+        },
+        {
+          "name": "view_count",
+          "type": "integer",
+          "required": false,
+          "default": 0
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "displayName": "Projects",
+      "singularName": "project",
+      "pluralName": "projects",
+      "collectionName": "projects",
+      "endpoint": "/api/projects",
+      "draftAndPublish": true,
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "image",
+          "type": "media",
+          "multiple": false,
+          "required": false,
+          "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        {
+          "name": "order",
+          "type": "biginteger",
+          "required": false,
+          "default": "0"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "displayName": "Slide",
+      "singularName": "slide",
+      "pluralName": "slides",
+      "collectionName": "slides",
+      "endpoint": "/api/slides",
+      "draftAndPublish": true,
+      "attributes": [
+        {
+          "name": "image",
+          "type": "media",
+          "multiple": true,
+          "required": true,
+          "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "link",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "order",
+          "type": "integer",
+          "required": true,
+          "default": 0,
+          "unique": true,
+          "min": 0
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "displayName": "Training",
+      "singularName": "training",
+      "pluralName": "trainings",
+      "collectionName": "trainings",
+      "endpoint": "/api/trainings",
+      "draftAndPublish": true,
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "image",
+          "type": "media",
+          "multiple": false,
+          "required": false,
+          "allowedTypes": ["images", "files", "videos", "audios"]
+        },
+        {
+          "name": "published",
+          "type": "boolean",
+          "required": false,
+          "default": false
+        },
+        {
+          "name": "content",
+          "type": "richtext",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "displayName": "Training-anket",
+      "singularName": "training-anket",
+      "pluralName": "training-ankets",
+      "collectionName": "training_ankets",
+      "endpoint": "/api/training-ankets",
+      "draftAndPublish": true,
+      "attributes": [
+        {
+          "name": "file",
+          "type": "media",
+          "multiple": false,
+          "required": true,
+          "allowedTypes": ["images", "files", "videos", "audios"]
+        }
+      ]
+    }
+  ],
+  "statistics": {
+    "totalCollections": 14,
+    "collectionsWithMedia": 10,
+    "collectionsWithOrder": 5,
+    "collectionsWithPublish": 2,
+    "collectionsWithUniqueFields": 2
+  },
+  "routes": {
+    "allHaveRoutes": true,
+    "allHaveControllers": true,
+    "note": "All collection types have routes and controllers files created"
+  }
+}
