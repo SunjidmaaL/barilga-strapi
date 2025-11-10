@@ -38,10 +38,6 @@
       "type": "uid",
       "targetField": "title"
     },
-    "published": {
-      "type": "boolean",
-      "default": false
-    },
     "view_count": {
       "type": "integer",
       "default": 0

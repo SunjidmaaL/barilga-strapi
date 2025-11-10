@@ -28,10 +28,6 @@
         "audios"
       ]
     },
-    "published": {
-      "type": "boolean",
-      "default": false
-    },
     "content": {
       "type": "richtext"
     }

@@ -770,7 +770,6 @@ export interface ApiNews1News1 extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::news1.news1'> &
       Schema.Attribute.Private;
-    published: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
@@ -852,6 +851,31 @@ export interface ApiSlideSlide extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiTestTest extends Struct.CollectionTypeSchema {
+  collectionName: 'tests';
+  info: {
+    displayName: 'test';
+    pluralName: 'tests';
+    singularName: 'test';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::test.test'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTrainingAnketTrainingAnket
   extends Struct.CollectionTypeSchema {
   collectionName: 'training_ankets';
@@ -905,7 +929,6 @@ export interface ApiTrainingTraining extends Struct.CollectionTypeSchema {
       'api::training.training'
     > &
       Schema.Attribute.Private;
-    published: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -1437,6 +1460,7 @@ declare module '@strapi/strapi' {
       'api::news1.news1': ApiNews1News1;
       'api::project.project': ApiProjectProject;
       'api::slide.slide': ApiSlideSlide;
+      'api::test.test': ApiTestTest;
       'api::training-anket.training-anket': ApiTrainingAnketTrainingAnket;
       'api::training.training': ApiTrainingTraining;
       'plugin::content-releases.release': PluginContentReleasesRelease;
