@@ -749,6 +749,37 @@ export interface ApiLicenseLicense extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiMemberNews1MemberNews1 extends Struct.CollectionTypeSchema {
+  collectionName: 'member_news';
+  info: {
+    displayName: 'member-news';
+    pluralName: 'member-news';
+    singularName: 'member-news1';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::member-news1.member-news1'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNews1News1 extends Struct.CollectionTypeSchema {
   collectionName: 'news2';
   info: {
@@ -1457,6 +1488,7 @@ declare module '@strapi/strapi' {
       'api::license-info.license-info': ApiLicenseInfoLicenseInfo;
       'api::license-table.license-table': ApiLicenseTableLicenseTable;
       'api::license.license': ApiLicenseLicense;
+      'api::member-news1.member-news1': ApiMemberNews1MemberNews1;
       'api::news1.news1': ApiNews1News1;
       'api::project.project': ApiProjectProject;
       'api::slide.slide': ApiSlideSlide;
